@@ -1,0 +1,268 @@
+:root{
+    --bg:#f4f9f9;
+    --primary:#0ea5a6;
+    --secondary:#14b8a6;
+    --dark:#1f2937;
+}
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:'Segoe UI',sans-serif;
+    background:linear-gradient(-45deg,#f4fbfb,#eef8f8,#f8fcfc,#f1fbfb);
+    background-size:400% 400%;
+    animation:bgMove 15s ease infinite;
+}
+
+/* BACKGROUND ANIMATION */
+@keyframes bgMove{
+    0%{background-position:0% 50%;}
+    50%{background-position:100% 50%;}
+    100%{background-position:0% 50%;}
+}
+
+/* NAVBAR */
+nav{
+    display:flex;
+    justify-content:space-between;
+    padding:15px 40px;
+    background:rgba(255,255,255,0.75);
+    backdrop-filter:blur(10px);
+    position:sticky;
+    top:0;
+    z-index:100;
+    box-shadow:0 4px 15px rgba(0,0,0,0.05);
+}
+
+nav h2{ color:var(--primary); }
+
+nav a{
+    margin-left:20px;
+    text-decoration:none;
+    color:var(--dark);
+    font-weight:600;
+}
+
+/* HERO */
+.hero{
+    text-align:center;
+    margin:50px 0 20px;
+    animation:fadeUp 1s ease;
+}
+
+.hero h1{
+    font-size:42px;
+    color:var(--primary);
+}
+
+.hero p{
+    margin-top:8px;
+    color:#555;
+}
+
+@keyframes fadeUp{
+    from{opacity:0; transform:translateY(30px);}
+    to{opacity:1; transform:translateY(0);}
+}
+
+/* SERVICE GRID */
+.services-grid{
+    width:90%;
+    max-width:1200px;
+    margin:40px auto;
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+    gap:25px;
+}
+
+/* CARD */
+.service-card{
+    position:relative;
+    height:330px;
+    border-radius:20px;
+    overflow:hidden;
+    text-decoration:none;
+    box-shadow:0 12px 25px rgba(0,0,0,0.12);
+    animation:floatCard 5s ease-in-out infinite;
+    transition:transform .4s;
+}
+
+@keyframes floatCard{
+    0%,100%{transform:translateY(0);}
+    50%{transform:translateY(-8px);}
+}
+
+/* IMAGE ANIMATION */
+.service-card img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    animation:kenburns 14s ease-in-out infinite alternate;
+    transition:transform .4s;
+}
+
+/* cinematic zoom */
+@keyframes kenburns{
+    0%{transform:scale(1);}
+    100%{transform:scale(1.15);}
+}
+
+.service-card:hover{
+    transform:scale(1.03);
+}
+
+.service-card:hover img{
+    transform:scale(1.2);
+}
+
+/* OVERLAY */
+.overlay{
+    position:absolute;
+    bottom:0;
+    width:100%;
+    padding:20px;
+    background:linear-gradient(
+        to top,
+        rgba(0,0,0,0.8),
+        rgba(0,0,0,0.2)
+    );
+    color:white;
+    transform:translateY(65%);
+    transition:.4s;
+}
+
+.service-card:hover .overlay{
+    transform:translateY(0);
+}
+
+.overlay h3{
+    font-size:24px;
+    margin-bottom:8px;
+}
+
+.overlay p{
+    font-size:14px;
+    line-height:1.5;
+}
+
+/* GLOW EFFECT */
+.service-card::after{
+    content:"";
+    position:absolute;
+    inset:0;
+    border-radius:20px;
+    border:2px solid transparent;
+    transition:.4s;
+}
+
+.service-card:hover::after{
+    border-color:rgba(14,165,166,0.7);
+    box-shadow:0 0 25px rgba(14,165,166,0.35);
+}
+
+/* ===========================
+   MOVING HEALTH LINE
+=========================== */
+.health-marquee{
+    margin-top:40px;
+    background:var(--primary);
+    color:white;
+    overflow:hidden;
+    white-space:nowrap;
+    padding:12px 0;
+}
+
+.marquee-content{
+    display:inline-block;
+    padding-left:100%;
+    animation:marquee 16s linear infinite;
+    font-weight:600;
+    font-size:18px;
+}
+
+@keyframes marquee{
+    0%{transform:translateX(0);}
+    100%{transform:translateX(-100%);}
+}
+
+/* Cartoon image animation */
+.service-card img{
+    width:100%;
+    height:100%;
+    object-fit:contain;
+    background:#fff;
+    padding:20px;
+
+    animation: floatImage 4s ease-in-out infinite;
+    transition: transform .4s;
+}
+
+.service-card:hover img{
+    transform: scale(1.12) rotate(-2deg);
+}
+
+/* floating movement */
+@keyframes floatImage{
+    0%,100%{ transform: translateY(0px);}
+    50%{ transform: translateY(-10px);}
+}
+/* =========================
+   CINEMATIC TRACKING PAGE
+========================= */
+
+.tracking-body{
+    margin:0;
+    overflow:hidden;
+}
+
+#map{
+    height:100vh;
+    width:100%;
+}
+
+/* Uber-style bottom panel */
+.tracking-card{
+    position:absolute;
+    bottom:0;
+    width:100%;
+    background:white;
+    padding:20px;
+    border-radius:20px 20px 0 0;
+    box-shadow:0 -8px 20px rgba(0,0,0,0.2);
+    animation:slideUp .8s ease;
+}
+
+@keyframes slideUp{
+    from{transform:translateY(100%);}
+    to{transform:translateY(0);}
+}
+
+.progress{
+    width:100%;
+    height:8px;
+    background:#eee;
+    border-radius:20px;
+    margin:12px 0;
+}
+
+.progress-fill{
+    height:100%;
+    width:60%;
+    background:linear-gradient(90deg,#0ea5a6,#14b8a6);
+    border-radius:20px;
+    animation:progressMove 8s linear infinite;
+}
+
+@keyframes progressMove{
+    0%{width:10%;}
+    100%{width:100%;}
+}
+
+.status{
+    color:#555;
+    font-size:14px;
+}

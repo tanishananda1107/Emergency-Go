@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Services - EmergencyGo</title>
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet"
+ href="https://unpkg.com/leaflet/dist/leaflet.css"/>
+</head>
+<body>
+
+<nav>
+    <h2>🚑 EmergencyGo</h2>
+    <div>
+        <a href="index.html">Home</a>
+        <a href="services.html">Services</a>
+        <a href="contact.html">Contact</a>
+    </div>
+</nav>
+
+<div class="container">
+
+<div class="card">
+    <h2>Select Emergency Type</h2>
+
+    <div class="services">
+        <div class="service" onclick="selectType(this,'Ambulance')">
+            🚑 <span>Ambulance</span>
+        </div>
+
+        <div class="service" onclick="selectType(this,'Doctor On The Go')">
+            🧑‍⚕️ <span>Doctor</span>
+        </div>
+
+        <div class="service" onclick="selectType(this,'Fire Emergency')">
+            🔥 <span>Fire</span>
+        </div>
+    </div>
+
+    <input id="location" placeholder="Enter your location">
+    <button onclick="requestHelp()">Request Help Now</button>
+
+    <p id="status"></p>
+</div>
+
+<div id="map"></div>
+
+</div>
+
+<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+<script src="app.js"></script>
+
+</body>
+</html>
